@@ -1,16 +1,17 @@
 package hub.Foro.domain.topico;
 
+
+import hub.Foro.domain.usuario.DatosRespuestaUsuario;
 import hub.Foro.domain.usuario.Usuario;
 
-
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public record DatosRespuestatopico(
         Long id,
         String titulo,
         String mensaje,
-        String fechaCreacion,
-        String autor,
+        LocalDateTime fecha,
+        DatosRespuestaUsuario autor,
         String curso
 ) {
 }

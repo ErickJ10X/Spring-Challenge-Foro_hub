@@ -1,15 +1,16 @@
 package hub.Foro.domain.topico;
 
+import java.time.LocalDateTime;
+
 public record DatosListadoTopico(
         Long id,
         String titulo,
         String mensaje,
-        String fechacreacion,
-        String autor,
+        LocalDateTime fecha,
         String curso
 ) {
 
-        public DatosListadoTopico(Topico topico) {
-            this(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFechaCreacion(), topico.getAutor(), topico.getCurso());
-        }
+    public DatosListadoTopico(Topico topico) {
+        this(topico.getId(), topico.getTitulo(), topico.getMensaje(), topico.getFecha(), topico.getCurso());
+    }
 }

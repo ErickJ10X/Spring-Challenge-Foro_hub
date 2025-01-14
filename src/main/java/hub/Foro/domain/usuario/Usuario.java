@@ -9,10 +9,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import java.util.Collection;
 import java.util.List;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@AllArgsConstructor
 @Table(name = "usuarios")
 @Entity(name = "usuario")
 @EqualsAndHashCode(of = "id")
@@ -22,6 +18,10 @@ public class Usuario implements UserDetails {
     private Long id;
     private String login;
     private String clave;
+
+    public Usuario(String login) {
+        this.login = login;
+    }
 
 
     @Override
@@ -58,4 +58,38 @@ public class Usuario implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+    public Usuario(Long id, String login, String clave) {
+        this.id = id;
+        this.login = login;
+        this.clave = clave;
+    }
+
+    public Usuario() {
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getClave() {
+        return clave;
+    }
+
+    public void setClave(String clave) {
+        this.clave = clave;
+    }
 }
+

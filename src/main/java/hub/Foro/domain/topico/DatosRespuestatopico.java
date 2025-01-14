@@ -9,8 +9,8 @@ public record DatosRespuestatopico(
         Long id,
         String titulo,
         String mensaje,
-        Date fechaCreacion,
-        Usuario autor,
+        String fechaCreacion,
+        String autor,
         String curso
 ) {
 }

@@ -1,6 +1,5 @@
 package hub.Foro.domain.topico;
 
-import hub.Foro.domain.usuario.Usuario;
 import jakarta.validation.constraints.NotBlank;
 
 import java.util.Date;
@@ -11,9 +10,9 @@ public record DatosRegistroTopico(
         @NotBlank
         String mensaje,
         @NotBlank
-        Date fechaCreacion,
+        String fechacreacion,
         @NotBlank
-        Usuario autor,
+        String autor,
         @NotBlank
         String curso
 ) {

@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import jakarta.validation.Valid;
 import lombok.*;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Table(name = "topicos")
@@ -16,15 +17,17 @@ public class Topico {
     private Long id;
     private String titulo;
     private String mensaje;
-    private String fechaCreacion;
+    private LocalDateTime fecha;
     private boolean status;
-    private String autor;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "autor")
+    private Usuario autor;
     private String curso;
 
     public Topico(@Valid DatosRegistroTopico datosRegistroTopico) {
         this.titulo = datosRegistroTopico.titulo();
         this.mensaje = datosRegistroTopico.mensaje();
-        this.fechaCreacion = datosRegistroTopico.fechacreacion();
+        this.fecha = LocalDateTime.now();
         this.status = true;
         this.autor = datosRegistroTopico.autor();
         this.curso = datosRegistroTopico.curso();
@@ -39,11 +42,11 @@ public class Topico {
             this.curso = datosActualizarTopico.curso();
     }
 
-    public Topico(Long id, String titulo, String mensaje, String fechaCreacion, boolean status, String autor, String curso) {
+    public Topico(Long id, String titulo, String mensaje, LocalDateTime fecha, boolean status, Usuario autor, String curso) {
         this.id = id;
         this.titulo = titulo;
         this.mensaje = mensaje;
-        this.fechaCreacion = fechaCreacion;
+        this.fecha = fecha;
         this.status = status;
         this.autor = autor;
         this.curso = curso;
@@ -76,12 +79,12 @@ public class Topico {
         this.mensaje = mensaje;
     }
 
-    public String getFechaCreacion() {
-        return fechaCreacion;
+    public LocalDateTime getFecha() {
+        return fecha;
     }
 
-    public void setFechaCreacion(String fechaCreacion) {
-        this.fechaCreacion = fechaCreacion;
+    public void setFecha(LocalDateTime fecha) {
+        this.fecha = fecha;
     }
 
     public boolean isStatus() {
@@ -92,11 +95,11 @@ public class Topico {
         this.status = status;
     }
 
-    public String getAutor() {
+    public Usuario getAutor() {
         return autor;
     }
 
-    public void setAutor(String autor) {
+    public void setAutor(Usuario autor) {
         this.autor = autor;
     }
 

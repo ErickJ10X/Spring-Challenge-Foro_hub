@@ -6,7 +6,6 @@ import jakarta.validation.Valid;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Table(name = "topicos")
 @Entity(name = "Topico")
